@@ -1,1 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://springframework.org/schema/jdbc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://springframework.org/schema/jdbc http://springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+	http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="myBlog"></property>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" value="dataSourceMyBlog"/>
+		<property name="configLocation" value="classpath:sqlmap/config/sql-mapper-config-myBlog.xml"/>
+		<property name="mapperLocations" />
+	</bean>
+
+</beans>
